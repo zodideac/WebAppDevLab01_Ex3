@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee House</title>
+    <meta name="description" content="Trang web chính thức của The Coffee House.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/webp" href="assets/img/flavicon.webp">
+</head>
+<body>
+  <header class="main-header">
+    <nav class="nav-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/img/logo-white.webp" class="logo-white" alt="Logo White">
+          <img src="assets/img/logo-black.webp" class="logo-black" alt="Logo Black">
+        </a>
+      </div>
+      <ul class="nav-items">
+        <li><a href="index.html">TRANG CHỦ</a></li>
+        <li><a href="about.html">VỀ CHÚNG TÔI</a></li>
+        <li><a href="stores.html">CỬA HÀNG</a></li>
+        <li><a href="contact.html">LIÊN HỆ</a></li>
+        <li><a href="policy.html">CHÍNH SÁCH</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+      <div class="hero-overlay">
+        <div class="container">
+          <h1>LIÊN HỆ</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <img src="assets/img/logo-black.webp" alt="Logo Black" class="form-logo">
+
+          <!-- Thông tin liên hệ -->
+          <div class="info-details">
+            <p><strong>VPGG:</strong> Tầng 6, Toà nhà Toyota, Số 315 Trường Chinh, P. Khương Mai, Q. Thanh Xuân, TP Hà Nội, Việt Nam</p>
+            <p><strong>Đặt hàng:</strong> 1800 6936</p>
+            <p><strong>Email:</strong> support.hn@thecoffeehouse.com.vn</p>
+          </div>
+          <div class="image-box">
+            <img src="assets/img/contact-form.webp" alt="Store Background" class="store-img">
+            <img src="assets/img/stickerset_1.webp" alt="Red Sticker" class="sticker-badge">
+          </div>
+        </div>
+        
+        <!-- Form Điền -->
+        <div class="form-card">
+          <form action="#" method="POST" id="tch-contact-form" enctype="multipart/form-data">
+            <input type="hidden" name="source" value="contact_page">
+
+            <fieldset>
+              <legend>Gửi lời nhắn cho "Nhà"</legend>
+
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="user-name">Tên của bạn</label>
+                  <input type="text" id="user-name" name="name" required placeholder="Nhập tên...">
+                </div>
+                <div class="input-group">
+                  <label for="user-email">Email của bạn</label>
+                  <input type="email" id="user-email" name="email" required placeholder="email@vi-du.com">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="user-phone">Số điện thoại</label>
+                  <input type="tel" id="user-phone" name="phone" pattern="[0-9]{10}" required placeholder="090xxxxxxx">
+                </div>
+                <div class="input-group">
+                  <label for="user-pass">Mã PIN bảo mật</label>
+                  <input type="password" id="user-pass" name="pin" pattern="[0-9]{4}" placeholder="4 con số">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="guests">Số lượng khách (tối đa 20)</label>
+                  <input type="number" id="guests" name="guests" min="1" max="20" step="1" value="1">
+                </div>
+                <div class="input-group">
+                  <label for="date-visit">Ngày dự kiến ghé thăm</label>
+                  <input type="date" id="date-visit" name="date">
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="city-choice">THÀNH PHỐ</label>
+                <input list="city-data" id="city-choice" name="city" placeholder="Gõ để tìm thành phố...">
+                <datalist id="city-data">
+                  <option value="Hồ Chí Minh">
+                  <option value="Hà Nội">
+                </datalist>
+              </div>
+
+              <div class="input-group">
+                <label for="region">KHU VỰC SINH SỐNG</label>
+                <select id="region" name="region" required>
+                <option value="" selected disabled>-- Chọn Quận/Huyện --</option>
+                  <optgroup label="Hồ Chí Minh">
+                    <option value="hcm-q1">Quận 1</option>
+                    <option value="hcm-q3">Quận 3</option>
+                    <option value="hcm-q10">Quận 10</option>
+                    <option value="hcm-bt">Quận Bình Thạnh</option>
+                  </optgroup>
+
+                  <optgroup label="Hà Nội">
+                    <option value="hn-hk">Hoàn Kiếm</option>
+                    <option value="hn-bd">Ba Đình</option>
+                    <option value="hn-cg">Cầu Giấy</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="input-group">
+                  <label for="mood">Mức độ hài lòng</label>
+                  <input type="range" id="mood" name="range" min="0" max="100">
+                </div>
+                <div class="input-group">
+                  <label for="brand-color">Màu sắc yêu thích</label>
+                  <input type="color" id="brand-color" name="color" value="#ea8025">
+                </div>
+              </div>
+              <div class="input-group">
+                <p>Mục đích liên hệ:</p>
+                <label><input type="radio" name="found" value="fb"> Góp ý</label>
+                <label><input type="radio" name="found" value="friend"> Tuyển dụng</label>
+              </div>
+              <div class="input-group">
+                <label for="file">Đính kèm ảnh minh chứng</label>
+                <input type="file" id="file" name="attachment">
+              </div>
+              <div class="input-group">
+                <label for="message">Nội dung</label>
+                <textarea id="message" name="message" rows="4" placeholder="Nhập lời nhắn cho &quot;Nhà&quot;..."></textarea>
+              </div>
+              <div class="input-group checkbox-group">
+                <label>
+                  <input type="checkbox" name="agree" required>Tôi đồng ý nhận thông báo khuyến mãi</label>
+              </div>
+              <div class="form-btns">
+                <button type="submit" class="btn-primary-form">GỬI</button>
+                <button type="reset" class="btn-secondary-form">LÀM MỚI</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <p class="footer-copy">&copy; 2026 THE COFFEE HOUSE</p>
+      <p style="color:rgb(170, 170, 170)" class="footer-copy">Designed for Website Application Development coursework submission</p>
+      <p class="footer-contact">Contact: <a href="https://github.com/zodideac" target="_blank" class="github-link">My Github</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
