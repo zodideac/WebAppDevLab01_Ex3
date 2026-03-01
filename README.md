@@ -68,4 +68,7 @@ The form on the Contact page includes:
 ---
 
 ## Credits
-- I'm greatly thankful for all the images and icons sources provided from the main website: https://thecoffeehouse.com . And highly inspired from their website.
+Concept & Assets: Inspired by [The Coffee House](https://thecoffeehouse.com).<br>
+Author: Nguyễn Hưng - ITCSIU24030<br>
+Course: Web Application Development (Lab 1)<br>
+Instructor: Dr. Lê Duy Tân
