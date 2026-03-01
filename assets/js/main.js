@@ -44,18 +44,3 @@
             resetTimer();
         });
     });
-
-/* Contact Form */
-    const contactForm = document.getElementById('tch-contact-form');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function() {
-            alert("Cảm ơn bạn! Thông tin đã được gửi tới Nhà.");
-        });
-
-        contactForm.addEventListener('reset', function(e) {
-            if (!confirm("Bạn có chắc chắn muốn xóa hết thông tin đã nhập?")) {
-                e.preventDefault();
-            }
-        });
-    }

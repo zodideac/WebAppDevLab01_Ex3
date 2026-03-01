@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Coffee House</title>
-    <meta name="description" content="Trang web chính thức của The Coffee House.">
+    <meta name="description" content="Trang web phụ của The Coffee House.">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/webp" href="assets/img/flavicon.webp">
 </head>
@@ -57,7 +57,7 @@
         
         <!-- Form Điền -->
         <div class="form-card">
-          <form action="#" method="POST" id="tch-contact-form" enctype="multipart/form-data">
+          <form action="contact.html" method="GET" id="tch-contact-form" enctype="multipart/form-data">
             <input type="hidden" name="source" value="contact_page">
 
             <fieldset>
@@ -95,7 +95,7 @@
               </div>
 
               <div class="input-group">
-                <label for="city-choice">THÀNH PHỐ</label>
+                <label for="city-choice">CHỌN THÀNH PHỐ</label>
                 <input list="city-data" id="city-choice" name="city" placeholder="Gõ để tìm thành phố...">
                 <datalist id="city-data">
                   <option value="Hồ Chí Minh">
@@ -105,27 +105,15 @@
 
               <div class="input-group">
                 <label for="region">KHU VỰC SINH SỐNG</label>
-                <select id="region" name="region" required>
-                <option value="" selected disabled>-- Chọn Quận/Huyện --</option>
-                  <optgroup label="Hồ Chí Minh">
-                    <option value="hcm-q1">Quận 1</option>
-                    <option value="hcm-q3">Quận 3</option>
-                    <option value="hcm-q10">Quận 10</option>
-                    <option value="hcm-bt">Quận Bình Thạnh</option>
-                  </optgroup>
-
-                  <optgroup label="Hà Nội">
-                    <option value="hn-hk">Hoàn Kiếm</option>
-                    <option value="hn-bd">Ba Đình</option>
-                    <option value="hn-cg">Cầu Giấy</option>
-                  </optgroup>
+                <select id="region" name="region" disabled>
+                  <option value="" selected disabled>-- Chọn Quận/Huyện --</option>
                 </select>
               </div>
 
               <div class="form-row">
                 <div class="input-group">
-                  <label for="mood">Mức độ hài lòng</label>
-                  <input type="range" id="mood" name="range" min="0" max="100">
+                  <label for="mood">Mức độ hài lòng: <span id="mood-value">50</span>%</label>
+                  <input type="range" id="mood" name="range" min="0" max="100" value="50">
                 </div>
                 <div class="input-group">
                   <label for="brand-color">Màu sắc yêu thích</label>
@@ -147,7 +135,7 @@
               </div>
               <div class="input-group checkbox-group">
                 <label>
-                  <input type="checkbox" name="agree" required>Tôi đồng ý nhận thông báo khuyến mãi</label>
+                  <input type="checkbox" name="agree">Tôi đồng ý nhận thông báo khuyến mãi qua email</label>
               </div>
               <div class="form-btns">
                 <button type="submit" class="btn-primary-form">GỬI</button>
@@ -169,7 +157,72 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    
+      const moodSlider = document.getElementById('mood');
+      const moodValueDisplay = document.getElementById('mood-value');
 
+      if (moodSlider && moodValueDisplay) {
+        moodSlider.addEventListener('input', function() {
+          moodValueDisplay.textContent = this.value;
+        });
+      }
+    });
+  </script>
+
+  <script>
+    const contactForm = document.getElementById('tch-contact-form');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (this.checkValidity()){
+          alert("Cảm ơn bạn! Lời nhắn của bạn đã được gửi thành công tới The Coffee House.");
+          this.reset();
+        }
+      });
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      const districtData = {
+          "Hồ Chí Minh": ["Quận 1", "Quận 2", "Quận 3", "Quận 4", "Quận 5", "Quận 6", "Quận 7", "Quận 8", "Quận 9", "Quận 10", "Quận 11", "Quận 12", "Quận Bình Thạnh", "Quận Bình Tân", "Quận Gò Vấp", "Quận Phú Nhuận", "Quận Tân Bình", "Quận Tân Phú", "Thủ Đức"],
+          "Hà Nội": ["Ba Đình", "Bắc Từ Liêm", "Cầu Giấy", "Chương Mỹ", "Đan Phượng", "Đông Anh", "Đống Đa", "Gia Lâm", "Giáp Bát", "Hai Bà Trưng", "Hoài Đức", "Hoàn Kiếm", "Hoàng Mai", "Long Biên", "Nam Từ Liêm", "Phúc Thọ", "Sóc Sơn", "Tây Hồ", "Thanh Oai", "Thanh Trì", "Thanh Xuân", "Thường Tín", "Từ Liêm", "Ứng Hòa"],
+      };
+
+      const cityInput = document.getElementById('city-choice');
+      const regionSelect = document.getElementById('region');
+
+      if (cityInput && regionSelect) {    
+        cityInput.addEventListener('input', function() {
+          const cityName = this.value.trim();
+
+          if (districtData[cityName]) {
+            regionSelect.disabled = false;
+            regionSelect.style.backgroundColor = "#fff";
+            regionSelect.style.cursor = "pointer";
+
+            regionSelect.innerHTML = '<option value="" disabled selected>-- Chọn Quận/Huyện --</option>';
+
+            districtData[cityName].forEach(district => {
+              const opt = document.createElement('option');
+              opt.value = district;
+              opt.textContent = district;
+              regionSelect.appendChild(opt);
+            });
+
+            console.log("Districts loaded for: " + cityName);
+          } else {
+              regionSelect.disabled = true;
+              regionSelect.style.backgroundColor = "#f5f5f5";
+              regionSelect.innerHTML = '<option value="">Vui lòng chọn thành phố trước</option>';
+            }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
